@@ -19,29 +19,35 @@ type: entities
 entities:
   - entity: sensor.bedrock
     name: Users Online
+    icon: 'mdi:account-multiple'
   - type: attribute
     name: MOTD
     entity: sensor.bedrock
     attribute: motd
+    icon: 'mdi:message-text'
   - type: attribute
     name: Map
     entity: sensor.bedrock
     attribute: map
+    icon: 'mdi:map'
   - type: attribute
     name: Game Mode
     entity: sensor.bedrock
     attribute: gamemode
   - type: attribute
     name: Latency
+    icon: 'mdi:signal'
     entity: sensor.bedrock
     attribute: latency
   - type: attribute
     name: Protocol
     entity: sensor.bedrock
     attribute: protocol
+    icon: 'mdi:numeric'
   - type: attribute
     name: Type
     entity: sensor.bedrock
     attribute: brand
+
 
 ```
