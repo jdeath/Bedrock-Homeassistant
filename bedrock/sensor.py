@@ -77,7 +77,7 @@ class ExampleSensor(Entity):
             self._attr["players_online"] = response.players_online
             self._attr["map"] = response.map
             self._attr["gamemode"] = response.gamemode
-            data._state = response.players_online
+            self._state = response.players_online
         except:
             self._state = 0
 
