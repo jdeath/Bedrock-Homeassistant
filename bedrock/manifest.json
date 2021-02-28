@@ -1,0 +1,12 @@
+{
+    "domain": "sensor",
+    "name": "bedrock",
+    "documentation": "https://github.com/jdeath/ha_bedrock",
+    "dependencies": [],
+    "codeowners": [
+        "@jdeath"
+    ],
+    "requirements": [
+        "mcstatus==5.1.1",
+    ]
+}
