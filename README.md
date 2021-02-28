@@ -9,7 +9,7 @@ For your configuration.yaml
 ```
 Sensor:
 - platform: bedrock
-    url: '192.168.1.120'
+    url: '192.168.1.xx'
     port: '19132' #(port is not used right now, must be default)
 ```
 
