@@ -1,6 +1,7 @@
 # Bedrock-Homeassistant
 
 Initial commit of a bedrock integration for homeassistant. Not easibly useable as built-in minecraft mcstatus must be updated to at least 5.1.1. I put in an issue. 
+Hopefully this capability will be integrated into the built-in Minecraft Server because the format should be almost identical
 
 Place bedrock folder in your custom components
 
