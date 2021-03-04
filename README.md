@@ -2,7 +2,7 @@
 
 Initial commit of a bedrock integration for homeassistant. Not easibly useable as built-in minecraft mcstatus must be updated to at least 5.1.1. I put in an issue and it has been accepted into dev. Hopefully the next release after 2021.3.0 will have it. Untill then, you can add it manually if you really want.
 
-ssh in developer mode or the host system and find your docker instance with “docker ps” (for me I am looking for container homeassistant/qemux86-64-homeassistant:2020.12.1)
+ssh in developer mode or the host system and find your docker instance with “docker ps” (for me I am looking for container homeassistant/qemux86-64-homeassistant:2021.3.0
 docker exec -it container# /bin/bash (where container# is the id of the homeassistant container)
 vi /usr/src/homeassistant/homeassistant/components/minecraft_server/manifest.json
 Google how to use vi, because I always forget
