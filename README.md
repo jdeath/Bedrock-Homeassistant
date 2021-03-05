@@ -10,7 +10,8 @@ Add any Bedrock servers
 ```
 
 Note needed with core-2021.3.1 or later:
-Initial commit of a bedrock integration for homeassistant. Not easibly useable as built-in minecraft mcstatus must be updated to at least 5.1.1. I put in an issue and it has been accepted into dev. Hopefully the next release after 2021.3.0 will have it. Untill then, you can add it manually if you really want.
+
+Not easibly useable as built-in minecraft mcstatus must be updated to at least 5.1.1. I put in an issue and it has been accepted into dev. 
 ```
 ssh in developer mode or the host system
 find your docker instance with “docker ps” (for me I am looking for container homeassistant/qemux86-64-homeassistant:2021.3.0
