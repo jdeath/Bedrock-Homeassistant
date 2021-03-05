@@ -1,6 +1,6 @@
 # Bedrock-Homeassistant
 
-Update: core-2021.3.1 or later should support this custom_component without changing the mcstatus. Hopefully the built-in component will be updated, because I did a PR. Until then,
+Core-2021.3.1 or later should support this custom_component without changing the mcstatus. Hopefully the built-in component will be updated, because I did a PR. Until then,
 
 ```
 Place minecraft_server folder in your custom components
@@ -9,7 +9,7 @@ Delete and re-add any existing java servers, as ths changes the built-in integra
 Add any Bedrock servers
 ```
 
-Note needed with core-2021.3.1 or later:
+Not needed with core-2021.3.1 or later:
 
 Not easibly useable as built-in minecraft mcstatus must be updated to at least 5.1.1. I put in an issue and it has been accepted into dev. 
 ```
