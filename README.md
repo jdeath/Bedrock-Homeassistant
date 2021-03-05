@@ -12,6 +12,8 @@ Do the same for the mcstatus entry in /usr/src/homeassistant/homeassistant/requi
 ```
 Hopefully this capability will be integrated into the built-in Minecraft Server Integration because the format should be almost identical
 
-Place bedrock folder in your custom components
+Place minecraft_server folder in your custom components
 
 Add a new minecraft integration from Configuration->Integrations
+
+You will have to re-add any existing java servers, as ths overwrites the built-in integration
