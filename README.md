@@ -5,8 +5,8 @@ Core-2021.3.1 or later should support this custom_component without changing the
 ```
 Place minecraft_server folder in your custom components
 Add a new minecraft integration from Configuration->Integrations
-Delete and re-add any existing java servers, as ths changes the built-in integration configuration
-Add any Bedrock servers
+Existing Java sensors should be auto migrated to updated integration
+Add any Bedrock servers or Java severs. Be sure to specify Server Type (Java or Bedrock) correctly in integration setup
 ```
 
 Not needed with core-2021.3.1 or later:
