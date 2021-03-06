@@ -7,26 +7,25 @@ import voluptuous as vol
 
 from homeassistant import config_entries
 from homeassistant.config_entries import ConfigFlow
-from homeassistant.const import CONF_HOST, CONF_NAME, CONF_PORT, CONF_TYPE
+from homeassistant.const import CONF_HOST, CONF_NAME, CONF_PORT
 
 from . import MinecraftServer, helpers
 from .const import (  # pylint: disable=unused-import
     DEFAULT_HOST,
     DEFAULT_NAME,
     DEFAULT_PORT,
+    DEFAULT_TYPE,
     DOMAIN,
     CONF_SERVER_TYPE,
     CONF_SERVER_TYPE_ALL,
     CONF_SERVER_TYPE_JAVA,
-    CONF_SERVER_TYPE_BEDROCK,
-    ConfServerType,
 )
 
 
 class MinecraftServerConfigFlow(ConfigFlow, domain=DOMAIN):
     """Handle a config flow for Minecraft Server."""
 
-    VERSION = 1
+    VERSION = 2
     CONNECTION_CLASS = config_entries.CONN_CLASS_LOCAL_POLL
 
     async def async_step_user(self, user_input=None):
@@ -146,7 +145,7 @@ class MinecraftServerConfigFlow(ConfigFlow, domain=DOMAIN):
                     vol.Required(
                         CONF_HOST, default=user_input.get(CONF_HOST, DEFAULT_HOST)
                     ): vol.All(str, vol.Lower),
-                    vol.Required(CONF_SERVER_TYPE): vol.In(CONF_SERVER_TYPE_ALL)
+                    vol.Required(CONF_SERVER_TYPE, default=user_input.get(CONF_SERVER_TYPE, CONF_SERVER_TYPE_JAVA)): vol.In(CONF_SERVER_TYPE_ALL)
                 }
             ),
             errors=errors,

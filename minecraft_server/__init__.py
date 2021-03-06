@@ -4,7 +4,6 @@ import asyncio
 from datetime import datetime, timedelta
 import logging
 from typing import Any, Dict
-
 from mcstatus.server import MinecraftServer as MCStatus
 from mcstatus.server import MinecraftBedrockServer as MCStatusBedrock
 
@@ -20,8 +19,7 @@ from homeassistant.helpers.event import async_track_time_interval
 from homeassistant.helpers.typing import ConfigType, HomeAssistantType
 
 from . import helpers
-from .const import DOMAIN, MANUFACTURER, SCAN_INTERVAL, SIGNAL_NAME_PREFIX, CONF_SERVER_TYPE, CONF_SERVER_TYPE_BEDROCK
-
+from .const import DOMAIN, MANUFACTURER, SCAN_INTERVAL, SIGNAL_NAME_PREFIX, CONF_SERVER_TYPE, CONF_SERVER_TYPE_BEDROCK, CONF_SERVER_TYPE_JAVA
 
 
 PLATFORMS = ["binary_sensor", "sensor"]
@@ -116,7 +114,7 @@ class MinecraftServer:
         self.players_online = None
         self.players_max = None
         self.players_list = None
-
+        self.motd = None
         # Dispatcher signal name
         self.signal_name = f"{SIGNAL_NAME_PREFIX}_{self.unique_id}"
 
@@ -199,20 +197,23 @@ class MinecraftServer:
                 self.version = status_response.version.brand
                 self.players_max = status_response.players_max
                 self.players_online = status_response.players_online
-                self.latency_time = status_response.latency * 10000.0
+                self.latency_time = round(status_response.latency * 10000.0, 3)
+                self.motd = status_response.motd
             else:
                 self.version = status_response.version.name
                 self.players_online = status_response.players.online
                 self.players_max = status_response.players.max
                 self.latency_time = status_response.latency
+                self.motd = status_response.description
+                
                 self.players_list = []
                 if status_response.players.sample is not None:
                     for player in status_response.players.sample:
                         self.players_list.append(player.name)
-                    self.players_list.sort()
+                    self.players_list.sort()           
+                
                 
             self.protocol_version = status_response.version.protocol
-            self.latency_time = status_response.latency
             
 
             # Inform user once about successful update if necessary.
@@ -313,3 +314,22 @@ class MinecraftServerEntity(Entity):
     def _update_callback(self) -> None:
         """Triggers update of properties after receiving signal from server."""
         self.async_schedule_update_ha_state(force_refresh=True)
+
+async def async_migrate_entry(hass, config_entry: ConfigEntry):
+    """Migrate old entry."""
+    _LOGGER.debug("Migrating from version %s", config_entry.version)
+
+    if config_entry.version == 1:
+        new = {
+            CONF_NAME: config_entry.data[CONF_NAME],
+            CONF_HOST: config_entry.data[CONF_HOST],
+            CONF_PORT: config_entry.data[CONF_PORT],
+            CONF_SERVER_TYPE: CONF_SERVER_TYPE_JAVA,
+            }
+                
+        config_entry.data = {**new}
+        config_entry.version = 2
+
+    _LOGGER.info("Migration to version %s successful", config_entry.version)
+
+    return True

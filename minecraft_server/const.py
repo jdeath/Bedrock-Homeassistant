@@ -1,11 +1,10 @@
 """Constants for the Minecraft Server integration."""
-from collections import defaultdict
-from typing import Dict, List, Literal, Set, Tuple
-
+from typing import Dict, List, Literal
 ATTR_PLAYERS_LIST = "players_list"
 
 DEFAULT_HOST = "localhost:25565"
 DEFAULT_NAME = "Minecraft Server"
+DEFAULT_TYPE = "JAVA"
 DEFAULT_PORT = 25565
 
 DOMAIN = "minecraft_server"
@@ -16,6 +15,7 @@ ICON_PLAYERS_ONLINE = "mdi:account-multiple"
 ICON_PROTOCOL_VERSION = "mdi:numeric"
 ICON_STATUS = "mdi:lan"
 ICON_VERSION = "mdi:numeric"
+ICON_MOTD = "mdi:message-text"
 
 KEY_SERVERS = "servers"
 
@@ -27,6 +27,7 @@ NAME_PLAYERS_ONLINE = "Players Online"
 NAME_PROTOCOL_VERSION = "Protocol Version"
 NAME_STATUS = "Status"
 NAME_VERSION = "Version"
+NAME_MOTD = "MOTD"
 
 SCAN_INTERVAL = 60
 
@@ -38,6 +39,7 @@ UNIT_PLAYERS_MAX = "players"
 UNIT_PLAYERS_ONLINE = "players"
 UNIT_PROTOCOL_VERSION = None
 UNIT_VERSION = None
+UNIT_MOTD = None
 
 CONF_SERVER_TYPE: str = "server_type"
 ConfServerType = Literal["Java", "Bedrock"]
