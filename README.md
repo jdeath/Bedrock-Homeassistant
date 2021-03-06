@@ -4,6 +4,7 @@ Core-2021.3.1 or later should support this custom_component without changing the
 
 ```
 Place minecraft_server folder in your custom components
+Restart homeassistant
 Add a new minecraft integration from Configuration->Integrations
 Existing Java sensors should be auto migrated to updated integration
 Add any Bedrock servers or Java severs. Be sure to specify Server Type (Java or Bedrock) correctly in integration setup
