@@ -15,17 +15,22 @@ from .const import (
     ICON_PROTOCOL_VERSION,
     ICON_VERSION,
     ICON_MOTD,
+    ICON_MAP,
     NAME_LATENCY_TIME,
     NAME_PLAYERS_MAX,
     NAME_PLAYERS_ONLINE,
     NAME_PROTOCOL_VERSION,
     NAME_VERSION,
+    NAME_MAP,
     NAME_MOTD,
     UNIT_PLAYERS_MAX,
     UNIT_PLAYERS_ONLINE,
     UNIT_PROTOCOL_VERSION,
     UNIT_VERSION,
     UNIT_MOTD,
+    UNIT_MAP,
+    CONF_SERVER_TYPE,
+    CONF_SERVER_TYPE_JAVA,
 )
 
 
@@ -36,15 +41,25 @@ async def async_setup_entry(
     server = hass.data[DOMAIN][config_entry.unique_id]
 
     # Create entities list.
-    entities = [
-        MinecraftServerVersionSensor(server),
-        MinecraftServerProtocolVersionSensor(server),
-        MinecraftServerLatencyTimeSensor(server),
-        MinecraftServerPlayersOnlineSensor(server),
-        MinecraftServerPlayersMaxSensor(server),
-        MinecraftServerMOTDSensor(server),
-    ]
-
+    if config_entry.data[CONF_SERVER_TYPE] == CONF_SERVER_TYPE_JAVA:
+        entities = [
+            MinecraftServerVersionSensor(server),
+            MinecraftServerProtocolVersionSensor(server),
+            MinecraftServerLatencyTimeSensor(server),
+            MinecraftServerPlayersOnlineSensor(server),
+            MinecraftServerPlayersMaxSensor(server),
+            MinecraftServerMOTDSensor(server),
+        ]
+    else:
+        entities = [
+            MinecraftServerVersionSensor(server),
+            MinecraftServerProtocolVersionSensor(server),
+            MinecraftServerLatencyTimeSensor(server),
+            MinecraftServerPlayersOnlineSensor(server),
+            MinecraftServerPlayersMaxSensor(server),
+            MinecraftServerMOTDSensor(server),
+            MinecraftServerMapSensor(server),
+        ]
     # Add sensor entities.
     async_add_entities(entities, True)
 
@@ -178,10 +193,10 @@ class MinecraftServerPlayersMaxSensor(MinecraftServerSensorEntity):
 
 
 class MinecraftServerMOTDSensor(MinecraftServerSensorEntity):
-    """Representation of a Minecraft Server maximum number of players sensor."""
+    """Representation of a Minecraft Server message of the day sensor."""
 
     def __init__(self, server: MinecraftServer) -> None:
-        """Initialize maximum number of players sensor."""
+        """Initialize motd sensor."""
         super().__init__(
             server=server,
             type_name=NAME_MOTD,
@@ -190,6 +205,22 @@ class MinecraftServerMOTDSensor(MinecraftServerSensorEntity):
         )
 
     async def async_update(self) -> None:
-        """Update maximum number of players."""
+        """Update motd."""
         self._state = self._server.motd
+  
+class MinecraftServerMapSensor(MinecraftServerSensorEntity):
+    """Representation of a Minecraft Server map sensor."""
+
+    def __init__(self, server: MinecraftServer) -> None:
+        """Initialize map sensor."""
+        super().__init__(
+            server=server,
+            type_name=NAME_MAP,
+            icon=ICON_MAP,
+            unit=UNIT_MAP,
+        )
+
+    async def async_update(self) -> None:
+        """Update map."""
+        self._state = self._server.map
         

@@ -115,6 +115,7 @@ class MinecraftServer:
         self.players_max = None
         self.players_list = None
         self.motd = None
+        self.map = None
         # Dispatcher signal name
         self.signal_name = f"{SIGNAL_NAME_PREFIX}_{self.unique_id}"
 
@@ -199,6 +200,7 @@ class MinecraftServer:
                 self.players_online = status_response.players_online
                 self.latency_time = round(status_response.latency * 10000.0, 3)
                 self.motd = status_response.motd
+                self.map = status_response.map
             else:
                 self.version = status_response.version.name
                 self.players_online = status_response.players.online
@@ -232,6 +234,8 @@ class MinecraftServer:
             self.players_max = None
             self.latency_time = None
             self.players_list = None
+            self.motd = None
+            self.map = None
 
             # Inform user once about failed update if necessary.
             if not self._last_status_request_failed:

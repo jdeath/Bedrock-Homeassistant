@@ -16,6 +16,7 @@ ICON_PROTOCOL_VERSION = "mdi:numeric"
 ICON_STATUS = "mdi:lan"
 ICON_VERSION = "mdi:numeric"
 ICON_MOTD = "mdi:message-text"
+ICON_MAP= "mdi:map"
 
 KEY_SERVERS = "servers"
 
@@ -28,6 +29,7 @@ NAME_PROTOCOL_VERSION = "Protocol Version"
 NAME_STATUS = "Status"
 NAME_VERSION = "Version"
 NAME_MOTD = "MOTD"
+NAME_MAP = "Map"
 
 SCAN_INTERVAL = 60
 
@@ -40,6 +42,7 @@ UNIT_PLAYERS_ONLINE = "players"
 UNIT_PROTOCOL_VERSION = None
 UNIT_VERSION = None
 UNIT_MOTD = None
+UNIT_MAP = None
 
 CONF_SERVER_TYPE: str = "server_type"
 ConfServerType = Literal["Java", "Bedrock"]
