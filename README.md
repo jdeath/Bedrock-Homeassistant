@@ -1,7 +1,26 @@
 # Bedrock-Homeassistant
 
-Core-2021.3.1 or later should support this custom_component without changing the mcstatus. Hopefully the built-in component will be updated, because I did a PR. Until then,
+Core-2021.3.1 or later required
 
+## Installation
+
+### HACS (prefered)
+
+1. Add this repository to HACS as an integration: https://github.com/jdeath/Bedrock-Homeassistant
+1. Install the integration
+1. Restart your instance
+
+### Manual
+
+1. Copy the content of `custom_components/Bedrock-Homeassistant` into your `custom_components/Bedrock-Homeassistant folder`.
+1. Restart your instance
+
+
+Add a new minecraft integration from Configuration->Integrations
+Existing Java sensors should be auto migrated to updated integration
+Add any Bedrock servers or Java severs. Be sure to specify Server Type (Java or Bedrock) correctly in integration setup
+
+### Old Instructions
 ```
 Place minecraft_server folder in your custom components
 Restart homeassistant
