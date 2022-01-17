@@ -12,7 +12,7 @@ Core-2021.3.1 or later required
 
 ### Manual
 
-1. Copy the content of `custom_components/Bedrock-Homeassistant` into your `custom_components/Bedrock-Homeassistant folder`.
+1. Copy the content of `custom_components/minecraft_server` into `/config/custom_components/minecraft_server` on your system.
 1. Restart your instance
 
 
