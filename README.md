@@ -1,5 +1,8 @@
 # Bedrock-Homeassistant
 
+Depreciated. Homeassistant 2023.11.0 supports bedrock now. https://www.home-assistant.io/integrations/minecraft_server/
+
+
 Core-2021.3.1 or later required
 
 [![Stargazers repo roster for @jdeath/Bedrock-Homeassistant](https://git-lister.onrender.com/api/stars/jdeath/Bedrock-Homeassistant?limit=30)](https://github.com/jdeath/Bedrock-Homeassistant/stargazers)
